@@ -1,0 +1,24 @@
+fs learning isnt intersting!
+
+const https = require('https');
+
+function countWords(url) {
+  https.get(url, (res) => {
+    let html = '';
+
+    res.on('data', (chunk) => {
+      html += chunk;
+    });
+
+    res.on('end', () => {
+      const text = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+      const words = text.split(/\s+/);
+      console.log(`Word count: ${words.length}`);
+    });
+
+  }).on('error', (err) => {
+    console.error('Error:', err);
+  });
+}
+
+countWords('https://example.com');

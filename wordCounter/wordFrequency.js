@@ -29,7 +29,7 @@ function saveToFile(wordCount, frequencies, filename) {
 }
 
 async function run() {
-  const url = ' https://www.wikipedia.org'; // Use a site that allows bots for testing
+  const url = 'https://www.wikipedia.org'; 
 
   try {
     const text = await findAndCleanText(url);

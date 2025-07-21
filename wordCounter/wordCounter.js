@@ -13,18 +13,10 @@ function countWords(text) {
 }
 
 async function findAndCleanText(url) {
-  try {
-    const response = await axios.get(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; MyBot/1.0)',
-      },
-    });
-    const html = response.data;
-    const text = rmHTMLtags(html);
-    return text;
-  } catch (error) {
-    throw new Error(`Failed to fetch content: ${error.message}`);
-  }
+  const response = await axios.get(url);
+  const html = response.data;
+  const text = rmHTMLtags(html);
+  return text;
 }
 
 module.exports = {

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { fetchAndCleanText, countWords } = require('./wordCounter');
+const { findAndCleanText, countWords } = require('./wordCounter');
 
 function countWordFrequency(text) {
   const clean = text.toLowerCase().replace(/\s+/g, ' ').trim();
@@ -29,10 +29,10 @@ function saveToFile(wordCount, frequencies, filename) {
 }
 
 async function run() {
-  const url = 'https://chatgpt.com';
+  const url = ' https://www.wikipedia.org'; // Use a site that allows bots for testing
 
   try {
-    const text = await fetchAndCleanText(url);
+    const text = await findAndCleanText(url);
     const wordCount = countWords(text);
     const frequencies = countWordFrequency(text);
 
